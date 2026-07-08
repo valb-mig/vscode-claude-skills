@@ -1,9 +1,7 @@
 # TODO
 
 ## Pendente
-- [ ] Configurar secret `VSCE_PAT` no GitHub (Settings → Secrets → Actions)
-      pra `release.yml` conseguir publicar no Marketplace quando uma tag
-      `v*` for empurrada. Sem isso o workflow de release falha.
+(nenhum item pendente identificado)
 
 ## Em andamento
 (nenhum item em andamento identificado)
