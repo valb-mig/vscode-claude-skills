@@ -119,13 +119,21 @@
     }
   },
   "scripts": {
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "vscode:prepublish": "npm run compile"
+    "typecheck": "tsc -p ./ --noEmit",
+    "build": "node esbuild.js",
+    "compile": "npm run typecheck && npm run build",
+    "watch": "node esbuild.js --watch",
+    "test": "vitest run",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.85.0",
-    "typescript": "^5.4.0"
+    "@vscode/vsce": "^3.2.0",
+    "esbuild": "^0.28.1",
+    "typescript": "^5.4.0",
+    "vitest": "^4.1.10"
   }
 }
