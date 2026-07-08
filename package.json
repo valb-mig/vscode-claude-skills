@@ -1,0 +1,131 @@
+{
+  "name": "claude-skills-explorer",
+  "displayName": "Claude Skills Explorer",
+  "description": "Browse, pin, and open your global, project, and plugin Claude Code skills from a sidebar tree.",
+  "version": "0.1.0",
+  "publisher": "valb-mig",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valb-mig/vscode-claude-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/valb-mig/vscode-claude-skills/issues"
+  },
+  "homepage": "https://github.com/valb-mig/vscode-claude-skills#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["claude", "claude code", "anthropic", "skills", "ai", "agent"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claudeSkills",
+          "title": "Claude Skills",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "claudeSkills": [
+        {
+          "id": "claudeSkillsView",
+          "name": "Skills"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "claudeSkills.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "claudeSkills.activate",
+        "title": "Open Skill File"
+      },
+      {
+        "command": "claudeSkills.insertInTerminal",
+        "title": "Claude Skills: Insert in Terminal"
+      },
+      {
+        "command": "claudeSkills.copyName",
+        "title": "Claude Skills: Copy Skill Name"
+      },
+      {
+        "command": "claudeSkills.revealInExplorer",
+        "title": "Claude Skills: Reveal in File Manager"
+      },
+      {
+        "command": "claudeSkills.pin",
+        "title": "Claude Skills: Pin Skill",
+        "icon": "$(pin)"
+      },
+      {
+        "command": "claudeSkills.unpin",
+        "title": "Claude Skills: Unpin Skill",
+        "icon": "$(pinned)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "claudeSkills.refresh",
+          "when": "view == claudeSkillsView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "claudeSkills.pin",
+          "when": "view == claudeSkillsView && viewItem == claudeSkillsSkill",
+          "group": "inline"
+        },
+        {
+          "command": "claudeSkills.unpin",
+          "when": "view == claudeSkillsView && viewItem == claudeSkillsSkillPinned",
+          "group": "inline"
+        },
+        {
+          "command": "claudeSkills.pin",
+          "when": "view == claudeSkillsView && viewItem == claudeSkillsSkill",
+          "group": "0_pin@1"
+        },
+        {
+          "command": "claudeSkills.unpin",
+          "when": "view == claudeSkillsView && viewItem == claudeSkillsSkillPinned",
+          "group": "0_pin@1"
+        },
+        {
+          "command": "claudeSkills.insertInTerminal",
+          "when": "view == claudeSkillsView && viewItem =~ /^claudeSkillsSkill/",
+          "group": "1_actions@1"
+        },
+        {
+          "command": "claudeSkills.copyName",
+          "when": "view == claudeSkillsView && viewItem =~ /^claudeSkillsSkill/",
+          "group": "1_actions@2"
+        },
+        {
+          "command": "claudeSkills.revealInExplorer",
+          "when": "view == claudeSkillsView && viewItem =~ /^claudeSkillsSkill/",
+          "group": "2_reveal@1"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
