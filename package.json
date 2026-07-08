@@ -2,7 +2,7 @@
   "name": "claude-skills-explorer",
   "displayName": "Claude Skills Explorer",
   "description": "Browse, pin, and open your global, project, and plugin Claude Code skills from a sidebar tree.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "valbmig",
   "license": "MIT",
   "icon": "media/icon.png",
